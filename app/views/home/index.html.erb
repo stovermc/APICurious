@@ -1,6 +1,6 @@
 <% if current_user %>
   <h2>Hello, <%= current_user.name %></h2>
-  <%= link_to "Logout", logout_path, method: delete %>
+  <%= link_to "Logout", logout_path, method: :delete %>
 <% else %>
   <%= link_to "Login with Github", github_login_path %>
 <% end %>
