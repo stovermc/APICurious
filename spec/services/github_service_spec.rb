@@ -3,7 +3,7 @@ require 'rails_helper'
 describe GithubService do
   context ".user_by" do
     it "returns a raw user" do
-      token = { token: '3ac7b680519f8caa2aafa84cc5af805eece53b7e' }
+      token = ENV['github_user_token']
       user = GithubService.user_by(token)
 
       expect(user).to be_a(Hash)

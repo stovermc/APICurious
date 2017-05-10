@@ -3,7 +3,7 @@ require 'rails_helper'
 describe GithubUser do
   context ".find_user" do
     it "returns user assocaited with given token" do
-      token = { token: '3ac7b680519f8caa2aafa84cc5af805eece53b7e' }
+      token = ENV['github_user_token']
       user = GithubUser.find_user(token)
 
       expect(user.count).to eq(1)
