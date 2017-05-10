@@ -1,6 +1,6 @@
 class GithubUser
   attr_reader :profile_pic, :name, :starred_repos, :followers, :following
-  
+
   def initialize(attrs = {})
     @attrs          = attrs
     @profile_pic   = attrs[:avatar_url]
