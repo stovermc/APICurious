@@ -7,6 +7,7 @@ require 'spec_helper'
 require 'rspec/rails'
 
 VCR.configure do |config|
+  config.configure_rspec_metadata!
   config.cassette_library_dir = "fixtures/vcr_cassettes"
   config.hook_into :webmock
   config.filter_sensitive_data('<GITHUB_KEY>') { ENV['GITHUB_KEY'] }
