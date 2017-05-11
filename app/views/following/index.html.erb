@@ -1,0 +1,5 @@
+<h3>Following</h3>
+<% @followed_users.each do |user| %>
+  <%= image_tag user.avatar, size: "120x120" %>
+  <%= user.login %> <br>
+<% end %>
