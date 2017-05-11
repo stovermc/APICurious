@@ -24,6 +24,15 @@ describe "when user logs in" do
     visit '/'
     click_on "Login with Github"
 
-    expect(page).to have_content('Followers 1')
+    expect(page).to have_content('Followers 9')
+  end
+
+  scenario "they see the number of users they  follow", vcr: true do
+    Capybara.app = Apicurious::Application
+    stub_oauth
+    visit '/'
+    click_on "Login with Github"
+
+    expect(page).to have_content('Following 13')
   end
 end

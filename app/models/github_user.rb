@@ -5,7 +5,7 @@ class GithubUser
     @attrs         = attrs
     @avatar        = attrs[:avatar_url]
     @name          = attrs[:name]
-    @login     = attrs[:login]
+    @login         = attrs[:login]
   end
 
   def self.find_user(token)
@@ -13,14 +13,19 @@ class GithubUser
     new(raw_user)
   end
 
+  def starred_repos(token)
+    GithubService.starred_repos(token).count
+  end
+
   def followers(token)
     GithubService.followers(token).map do |raw_follower|
       GithubUser.new(raw_follower)
-      #Need to figure out what to do with this in the controller
     end
   end
 
-  def starred_repos(token)
-    GithubService.starred_repos(token).count
+  def following(token)
+    GithubService.following(token).map do |raw_followed_user|
+      GithubUser.new(raw_followed_user)
+    end
   end
 end

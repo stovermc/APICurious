@@ -54,12 +54,23 @@ describe GithubUser do
 
   context "#followers" do
     it "returns all of a users followers" do
-      followers= [{login: 'Sadie'}, {login: 'Porter'}]
-      allow_any_instance_of(GithubService).to receive(:followers).with(token).and_return(followers)
+      stubbed_followers = [{login: 'Sadie'}, {login: 'Porter'}]
+      allow_any_instance_of(GithubService).to receive(:followers).with(token).and_return(stubbed_followers)
       user = GithubUser.find_user(token)
       top_follower = user.followers(token).first
 
-      expect(top_follower[:login]).to eq 'Sadie'
+      expect(top_follower.login).to eq 'Sadie'
+    end
+  end
+
+  context "#following" do
+    it "returns all of the users being followed" do
+      stubbed_following = [{login: 'Sadie'}, {login: 'Porter'}]
+      allow_any_instance_of(GithubService).to receive(:following).with(token).and_return(stubbed_following)
+      user = GithubUser.find_user(token)
+      followed_user = user.following(token).first
+
+      expect(followed_user.login).to eq 'Sadie'
     end
   end
 end

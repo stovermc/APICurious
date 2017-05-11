@@ -41,5 +41,19 @@ describe GithubService do
         expect(follower[:login]).to be_a String
       end
     end
+
+    context ".following", vcr: true do
+      it "returns raw followed users" do
+        token = ENV['github_user_token']
+        followed_users = GithubService.following(token)
+        followed_user = followed_users.first
+
+        expect(followed_users).to be_an Array
+        expect(followed_user).to be_a Hash
+        expect(followed_users.count).to eq 13
+        expect(followed_user).to have_key(:login)
+        expect(followed_user[:login]).to be_a String
+      end
+    end
   end
 end
