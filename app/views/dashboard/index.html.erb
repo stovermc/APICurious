@@ -5,7 +5,7 @@
 <h3><%= @github_user.login %></h3>
 <h4>Stars <%= @github_user.starred_repos(current_user.oauth_token) %></h4>
 <%= link_to "Followers #{@github_user.followers(current_user.oauth_token).count}", dashboard_followers_path%>
-<%= link_to "Following #{@github_user.following(current_user.oauth_token).count}" %>
+<%= link_to "Following #{@github_user.following(current_user.oauth_token).count}", dashboard_following_path%>
 
 
 <%= link_to "Logout", logout_path, method: :delete %>

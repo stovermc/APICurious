@@ -35,4 +35,4 @@ describe "when user logs in" do
 
     expect(page).to have_content('Following 13')
   end
-endj
+end
